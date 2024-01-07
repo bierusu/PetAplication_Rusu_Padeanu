@@ -1,0 +1,53 @@
+﻿@page
+@model PetAplication.Pages.Requests.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+
+<h1>Create Reservation</h1>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="form-group">
+                <label asp-for="Request.FacilityID" class="control-label">Select Facility</label>
+                <select asp-for="Request.FacilityID" class ="form-control" asp-items="ViewBag.FacilityID"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Request.PetID" class="control-label">Select Pet:</label>
+                <select asp-for="Request.PetID" class="form-control" asp-items="ViewBag.PetID"></select>
+            </div>
+
+           
+            <div class="form-group">
+                <label asp-for="Request.CheckIn" class="control-label">Check-In Date:</label>
+                <input asp-for="Request.CheckIn" class="form-control" type="date" />
+                <span asp-validation-for="Request.CheckIn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Request.CheckOut" class="control-label">Check-Out Date:</label>
+                <input asp-for="Request.CheckOut" class="form-control" type="date" />
+                <span asp-validation-for="Request.CheckOut" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
